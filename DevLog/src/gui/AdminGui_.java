@@ -255,11 +255,13 @@ public class AdminGui_ extends JPanel {
 		}
 		
 		
+		
+		
 
 	}
 	
 	
 	public JButton getBtnDeconnexion() {
-		return this.btnDeconnexionAdmin;
+		return btnDeconnexionAdmin;
 	}
 }
