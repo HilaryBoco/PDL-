@@ -35,13 +35,7 @@ import java.awt.event.ActionEvent;
 public class Interface {
 
 	private JFrame frmChoixDominantes;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JPanel panel_1;
 	private int connection;
-	private JButton btnDeconnexionAdmin;
 	private JButton btnDeconnexionEtudiant;
 	private JButton btnConnexion;
 	private JButton btnDeconnAcceuilAdmin;
@@ -178,6 +172,20 @@ public class Interface {
 			}
 		});		
 		
+		btnDeconnAcceuilAdmin = acceuilAdmin.getBtnDeconnexion();
+		
+		btnDeconnAcceuilAdmin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panel.remove(acceuilAdmin);
+				panel.removeAll();
+				panel.add(authen);
+				panel.revalidate();
+				panel.repaint();
+			}
+		});
+		
+		
 		btnConnexion = authen.getBtnConnexion();
 		
 		btnConnexion.addMouseListener(new MouseAdapter() {
@@ -197,6 +205,7 @@ public class Interface {
 						panel.removeAll();
 						panel.add(acceuilEtu);
 						panel.revalidate();
+						panel.repaint();
 					}
 				}
 			}

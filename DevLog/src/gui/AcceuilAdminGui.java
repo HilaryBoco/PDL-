@@ -10,6 +10,8 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
+import javax.swing.border.LineBorder;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.GridLayout;
@@ -57,7 +59,7 @@ public class AcceuilAdminGui extends JPanel {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(0, 567, 1023, 55);
+		panel_1.setBounds(0, 536, 1023, 65);
 		add(panel_1);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -92,30 +94,41 @@ public class AcceuilAdminGui extends JPanel {
 		JButton btnMenu = new JButton("New button");
 		
 		btnMenu.setIcon(new ImageIcon(AcceuilAdminGui.class.getResource("/data/login_icon.png")));
-		btnMenu.setBackground(UIManager.getColor("Button.background"));
+		btnMenu.setBackground(new Color(192, 63, 99));
 		btnMenu.setBounds(20, 11, 56, 56);
 		add(btnMenu);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(69, 11, 173, 93);
+		panel.setBounds(69, 11, 159, 93);
+		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel.setBackground(new Color(192, 63, 99));
 		panel.setVisible(false);
 		add(panel);
 		panel.setLayout(null);
 		
 	
 		JButton btnQuitter = new JButton("Quitter");
-		btnQuitter.setBounds(10, 11, 132, 23);
+		btnQuitter.setIcon(new ImageIcon(AcceuilAdminGui.class.getResource("/data/quitterIcone.jpg")));
+		btnQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnQuitter.setBounds(142, 0, 30, 23);
 		panel.add(btnQuitter);
 		
 		btnDeconnAcceuilAdmin = new JButton("Deconnexion");
-		btnDeconnAcceuilAdmin.setBounds(10, 50, 132, 23);
+
+		btnDeconnAcceuilAdmin.setBounds(10, 59, 132, 23);
 		panel.add(btnDeconnAcceuilAdmin);
+		
+		JButton btnProfilAcc = new JButton("Profil");
+		btnProfilAcc.setBounds(10, 25, 132, 23);
+		panel.add(btnProfilAcc);
 		
 		btnMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panel.setVisible(true);
-				
+				panel.setVisible(true);	
 			}
 		});
 		
@@ -144,5 +157,4 @@ public class AcceuilAdminGui extends JPanel {
 	public JButton getBtnEtudiant(){
 		return btnEtudiant;
 	}
-	
 }

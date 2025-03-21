@@ -25,11 +25,10 @@ public class AuthentificationGui extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	
-	private JTextField textField_2;
+	private JTextField idEnter;
 	private JPasswordField passwordField;
 	private JTextField textField;
 	private int balise;
-	private int compt;
 	private JLabel lblNewLabel;
 	private JLabel lblMotDePasse;
 	private JLabel lblNewLabel_1;
@@ -44,7 +43,6 @@ public class AuthentificationGui extends JPanel {
 	 * Create the panel.
 	 */
 	public AuthentificationGui() {
-		compt = 0;
 		setSize(new Dimension(1023, 628));
 		setLayout(null);
 		
@@ -54,11 +52,11 @@ public class AuthentificationGui extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		textField_2.setBounds(370, 202, 303, 35);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		idEnter = new JTextField();
+		idEnter.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		idEnter.setBounds(370, 202, 303, 35);
+		panel.add(idEnter);
+		idEnter.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -123,7 +121,7 @@ public class AuthentificationGui extends JPanel {
 		btnConnexion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int utilisateurEnter = Integer.parseInt(textField_2.getText().strip());
+				int utilisateurEnter = Integer.parseInt(idEnter.getText().strip());
 				char[] motDePasseEnter = passwordField.getPassword();
 				
 				String motDePasseEnter_ = String.valueOf(motDePasseEnter, 0, motDePasseEnter.length);
@@ -155,4 +153,15 @@ public class AuthentificationGui extends JPanel {
 	public JButton getBtnConnexion() {
 		return btnConnexion;
 	}
+	
+	
+	/*
+	public JTextField getMotDePasse() {
+		return passwordField;
+	}
+	
+	public JTextField getIdEnter() {
+		return idEnter;
+	}
+	**/
 }

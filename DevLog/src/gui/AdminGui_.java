@@ -142,18 +142,20 @@ public class AdminGui_ extends JPanel {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(panel.getBackground());
 		panel_3.setVisible(false);
-		panel_3.setBounds(10, 67, 122, 115);
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_3.setBounds(30, 45, 122, 115);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
 		JButton btnNewButton_3 = new JButton("PROFIL");
-		btnNewButton_3.setBounds(10, 1, 107, 31);
+		btnNewButton_3.setBounds(10, 30, 107, 31);
 		btnNewButton_3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnNewButton_3.setBackground(new Color(162, 63, 99));
 		panel_3.add(btnNewButton_3);
 		
-		JButton btnQuitter = new JButton("QUITTER");
-		btnQuitter.setBounds(10, 36, 107, 31);
+		JButton btnQuitter = new JButton("");
+		btnQuitter.setIcon(new ImageIcon(AdminGui_.class.getResource("/data/quitterIcone.jpg")));
+		btnQuitter.setBounds(95, 0, 27, 23);
 		btnQuitter.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnQuitter.setBackground(new Color(162, 63, 99));
 		panel_3.add(btnQuitter);
