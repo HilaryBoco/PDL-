@@ -56,6 +56,8 @@ public class DominanteDao extends ConnectionDao{
 	
 	public ArrayList<Dominante> getAll() {
 		
+		
+		listDominante = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -82,7 +84,7 @@ public class DominanteDao extends ConnectionDao{
 			
 			try {
 				if(rs != null) {
-					rs = null;
+					rs.close();
 				}	
 			}catch(Exception ignore) {
 			}
@@ -92,13 +94,13 @@ public class DominanteDao extends ConnectionDao{
 			
 			try {
 				if(ps != null) {
-					ps = null;
+					ps.close();
 				}	
 			}catch(Exception ignore) {
 			}
 			try {
 				if(con != null) {
-					con = null;
+					con.close();
 				}
 			}catch(Exception ignore) {
 			}
@@ -106,14 +108,6 @@ public class DominanteDao extends ConnectionDao{
 			
 		return listDominante;
 	}
-	
-	public static void main(String args[]) {
-		
-		DominanteDao domdao = new DominanteDao();
-		System.out.println(domdao.getAll());
-		
-	}
-	
 	
 	
 }

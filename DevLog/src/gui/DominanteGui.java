@@ -32,9 +32,11 @@ public class DominanteGui extends JPanel {
 	 * Create the panel.
 	 */
 	public DominanteGui(String action) {
-		setBackground(new Color(255, 255, 255));
-		
-		
+		initialize(action);
+	}
+	
+	public void initialize(String action) {
+        setBackground(new Color(255, 255, 255));
 		setVisible(true);
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
@@ -166,7 +168,7 @@ public class DominanteGui extends JPanel {
 				if(nomLongEnter.length() < 50
 					&& sigleEnter.length() < 10
 					&& placeMaxEnter  < 35
-					&& placeApprentisEnter  < 8){
+					&& placeApprentisEnter  < 12){
 						Dominante dom = new Dominante(idEnter, nomLongEnter, sigleEnter, placeMaxEnter, placeApprentisEnter);
 						
 						DominanteDao domDao = new DominanteDao();
@@ -186,5 +188,5 @@ public class DominanteGui extends JPanel {
 				}
 			}
 		});
-		}
+	}
 	}

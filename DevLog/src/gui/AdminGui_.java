@@ -127,6 +127,7 @@ public class AdminGui_ extends JPanel {
 		panel_2_2_1.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JButton btnConsulter = new JButton("CONSULTER");
+	
 		btnConsulter.setForeground(Color.WHITE);
 		btnConsulter.setBackground(new Color(162, 63, 99));
 		panel_2_2_1.add(btnConsulter);
@@ -219,6 +220,25 @@ public class AdminGui_ extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				panel_3.setVisible(false);
 				panel_4.setVisible(true);	
+			}
+		});
+		
+		btnConsulter.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnConsulter.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						panel_1.removeAll();
+						panel_1.repaint();
+						panel_1_1 = new ConsulterDominante();
+						panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+						panel_1_1.setBackground(new Color(162, 63, 99));
+						panel_1_1.setForeground(new Color(255, 255, 255));
+						panel_1.add(panel_1_1);	
+						panel_1.revalidate();
+					}
+				});
 			}
 		});
 		
