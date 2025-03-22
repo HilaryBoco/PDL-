@@ -123,5 +123,11 @@ public class Dominante {
 	public void setPlacesApprentis(int aPlacesApprentis) {
 		this.placesApprentis = aPlacesApprentis;
 	}
+
+	@Override
+	public String toString() {
+		return "Dominante [id=" + id + ", nomLong=" + nomLong + ", sigle=" + sigle + ", placeMax=" + placeMax
+				+ ", placesApprentis=" + placesApprentis + "]";
+	}
 	
 }

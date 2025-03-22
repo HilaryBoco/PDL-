@@ -64,7 +64,7 @@ public class DominanteDao extends ConnectionDao{
 
 		try {
 			con = DriverManager.getConnection(URL, LOGIN, PASS);
-			ps = con.prepareStatement("SELECT * FROM DOMINANTE");
+			ps = con.prepareStatement("SELECT * FROM DOMINANTE ORDER BY IDDOM");
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
@@ -109,5 +109,44 @@ public class DominanteDao extends ConnectionDao{
 		return listDominante;
 	}
 	
+	
+	public int update(Dominante dom) {
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		int returnValue = 0;
+		
+		try {
+			con = DriverManager.getConnection(URL, LOGIN, PASS);
+			ps = con.prepareStatement("UPDATE DOMINANTE SET NOMLONG = ?, SIGLE = ?, PLACEMAX = ?, PLACESAPPRENTIS = ? WHERE IDDOM = ?");
+			ps.setString(1, dom.getNomLong());
+			ps.setString(2, dom.getSigle());
+			ps.setInt(3, dom.getPlaceMax());
+			ps.setInt(4, dom.getPlacesApprentis());
+			ps.setInt(5, dom.getId());
+		
+			returnValue = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(con != null) {
+					con.close();
+				}
+			}catch(Exception ignore) {
+			}
+			
+			try {
+				if(ps != null) {
+					ps.close();
+				}
+			}catch(Exception ignore) {
+			}
+			
+		}
+		
+		return returnValue;
+	}
 	
 }
