@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import java.awt.GridBagLayout;
@@ -105,32 +106,24 @@ public class ConsulterDominante extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnDelete.setBounds(723, 0, 50, 34);
+		btnDelete.setBounds(748, 0, 50, 34);
 		panel.add(btnDelete);
-		
-		JButton btnSet = new JButton("");
-		btnSet.setIcon(new ImageIcon(ConsulterDominante.class.getResource("/data/modifierIcone.jpg")));
-		btnSet.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnSet.setBounds(648, 0, 50, 34);
-		panel.add(btnSet);
 		
 		JButton btnAdd = new JButton("");
 		
 		btnAdd.setIcon(new ImageIcon(ConsulterDominante.class.getResource("/data/addIcone.jpg")));
-		btnAdd.setBounds(557, 0, 50, 34);
+		btnAdd.setBounds(697, 0, 50, 34);
 		panel.add(btnAdd);
 		
 		JButton btnValider = new JButton("");
 		
+		
 		btnValider.setIcon(new ImageIcon(ConsulterDominante.class.getResource("/data/validerIcone.jpg")));
-		btnValider.setBounds(10, 0, 51, 34);
+		btnValider.setBounds(646, 0, 51, 34);
 		panel.add(btnValider);
 		
 		JButton btnRefresh = new JButton("");
-		btnRefresh.setBounds(92, 0, 50, 34);
+		btnRefresh.setBounds(0, 0, 50, 34);
 		panel.add(btnRefresh);
 		
 		JScrollPane scroll = new JScrollPane(panel);
@@ -218,17 +211,21 @@ public class ConsulterDominante extends JPanel {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							
+							int confirm = JOptionPane.showConfirmDialog(null, "Est vous sur de vouloir modifier ces informations ?", 
+									"Validation", JOptionPane.DEFAULT_OPTION);
+							
 							/* on recupere les nouvelles informations tapées par l'utilisateur */
 							String nouveauNomLong = listDominanteNomLong[num].getText().strip();
 							String nouveauSigle = listDominanteSigle[num].getText().strip();
 							int nouveauPlaceMax = Integer.parseInt(listDominantePlaceMax[num].getText().strip());
 							int nouveauPlaceApprentis = Integer.parseInt(listDominantePlacesApprentis[num].getText().strip());
 							
-							Dominante dom = new Dominante(num, nouveauNomLong, nouveauSigle, nouveauPlaceMax, nouveauPlaceApprentis);
+							Dominante dom = new Dominante(num +1, nouveauNomLong, nouveauSigle, nouveauPlaceMax, nouveauPlaceApprentis);
 							DominanteDao domAo = new DominanteDao();
 							
-							System.out.println(dom.toString());
-							domAo.update(dom);
+							if(confirm == 0) {
+								domAo.update(dom);
+							}
 						}
 					});
 					
