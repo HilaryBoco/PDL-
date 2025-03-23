@@ -245,10 +245,10 @@ public class ConsulterEtudiant extends JPanel {
 							String nouveauNom = listEtudiantNom[num].getText().strip();
 							String nouveauPrenom = listEtudiantPrenom[num].getText().strip();
 							int nouveauDateDeNaissance = Integer.parseInt(listEtudiantDateDeNaissance[num].getText().strip());
-							int nouveauClassement = Integer.parseInt(listClassement[num].getText().strip());
+							int nouveauClassement = Integer.parseInt(listEtudiantClassement[num].getText().strip());
 							
 							Student etu = new Student(num, nouveauNom, nouveauPrenom, nouveauDateDeNaissance, nouveauClassement);
-							EtudiantDao etuAo = new EtudianteDao();
+							EtudiantDao etuAo = new EtudiantDao();
 							
 						System.out.println(etu.toString());
 							etuAo.update(etu);
@@ -276,5 +276,4 @@ public class ConsulterEtudiant extends JPanel {
 			}
 		}
 	}
-}
 

@@ -58,7 +58,7 @@ public class Student {
 		this.motDePasse = motDePasse;
 	}
 	
-	public Student(int id, String nom, String prenom, String dateDENaissance,  int classement, String motDePasse, int promotion, int filiere) {
+	public Student(int id, String nom, String prenom, String dateDeNaissance,  int classement, String motDePasse, int promotion, int filiere) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -68,7 +68,7 @@ public class Student {
 		this.classement = classement;
 		this.filiere = filiere;
 	}
-	
+
 	/**
 	 * Cette methode 
 	 * @return id de l'admin
