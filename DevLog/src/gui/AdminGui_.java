@@ -40,7 +40,7 @@ public class AdminGui_ extends JPanel {
 		
 		compt = 0;
 		setLayout(new GridLayout(0, 1, 0, 0));
-		
+		ConsulterDominante monPanel = new ConsulterDominante();
 		
 		JPanel panel = new JPanel();
 		add(panel);
@@ -250,14 +250,14 @@ public class AdminGui_ extends JPanel {
 			*/
 		}
 		
-		ConsulterDominante monPanel = new ConsulterDominante();
+		
 		btnAdd = monPanel.getBtnAdd();
 		
 		btnAdd.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				panel_1_1 = new ConsulterDominante();
+				panel_1_1 = new DominanteGui("ajout");
 				reInitializeSubPanel(panel_1, panel_1_1);
 			}
 		});
