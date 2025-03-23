@@ -275,5 +275,6 @@ public class ConsulterEtudiant extends JPanel {
 				*/
 			}
 		}
-	}
+	}}}}}}
+}}}
 
