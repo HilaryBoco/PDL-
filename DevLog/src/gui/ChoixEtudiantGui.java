@@ -19,7 +19,7 @@ import dao.*;
 public class ChoixEtudiantGui extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private int compteur = 0;
+	private int compteur = 1;
 	private JPanel panelDominantes;
 	private ArrayList<JLabel> listLabelsDom;
 	private DominanteDao conDom = new DominanteDao();
@@ -103,7 +103,7 @@ public class ChoixEtudiantGui extends JPanel {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					
-					if(compteur > 5) {
+					if(compteur > 6) {
 						JOptionPane.showConfirmDialog(null, "Nombres de choix maximum de 5 ", "Erreur", JOptionPane.DEFAULT_OPTION);
 					}else {
 						if(!labelDom.getText().contains("-")) {
@@ -123,7 +123,7 @@ public class ChoixEtudiantGui extends JPanel {
 			
 			// un crée un label pour la dominante
 			JLabel labelDom = new JLabel();
-			labelDom.setText(" " + conDom.getAll().get(i).getNomLong());
+			labelDom.setText(" " + conDom.getAll().get(i).getNomLong() + " (" + conDom.getAll().get(i).getSigle() + " )");
 			listLabelsDom.add(i, labelDom);
 			panelDominantes.add(listLabelsDom.get(i));	
 		}
