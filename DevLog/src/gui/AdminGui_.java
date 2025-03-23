@@ -29,6 +29,7 @@ public class AdminGui_ extends JPanel {
 
 	private int compt;
 	private JButton btnDeconnexionAdmin;
+	private JButton btnAdd;
 	/**
 	 * Create the panel.
 	 */
@@ -134,11 +135,8 @@ public class AdminGui_ extends JPanel {
 		
 		
 		panel_1_1 = new EtudiantGui("ajout");
-		panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1_1.setBackground(new Color(162, 63, 99));
-		panel_1_1.setForeground(new Color(255, 255, 255));
-		panel_1.removeAll();
-		panel_1.add(panel_1_1);
+		
+		reInitializeSubPanel(panel_1, panel_1_1);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(panel.getBackground());
@@ -179,12 +177,8 @@ public class AdminGui_ extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1_1 = new EtapeGui_("ajout");
-				panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-				panel_1_1.setBackground(new Color(162, 63, 99));
-				panel_1_1.setForeground(new Color(255, 255, 255));
-				panel_1.removeAll();
-				panel_1.add(panel_1_1);	
-				panel_1.revalidate();
+				
+				reInitializeSubPanel(panel_1, panel_1_1);
 			}
 		});
 		
@@ -192,24 +186,15 @@ public class AdminGui_ extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1_1 = new DominanteGui("ajout");
-				panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-				panel_1_1.setBackground(new Color(162, 63, 99));
-				panel_1_1.setForeground(new Color(255, 255, 255));
-				panel_1.removeAll();
-				panel_1.revalidate();
-				panel_1.add(panel_1_1);
+				
+				reInitializeSubPanel(panel_1, panel_1_1);
 			}
 		});
 		menuEtdBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				panel_1_1 = new EtudiantGui("ajout");
-				panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-				panel_1_1.setBackground(new Color(162, 63, 99));
-				panel_1_1.setForeground(new Color(255, 255, 255));
-				panel_1.removeAll();
-				panel_1.add(panel_1_1);	
-				panel_1.revalidate();
+				reInitializeSubPanel(panel_1, panel_1_1);
 			}
 		});
 		
@@ -229,14 +214,8 @@ public class AdminGui_ extends JPanel {
 				btnConsulter.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
-						panel_1.removeAll();
-						panel_1.repaint();
 						panel_1_1 = new ConsulterDominante();
-						panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-						panel_1_1.setBackground(new Color(162, 63, 99));
-						panel_1_1.setForeground(new Color(255, 255, 255));
-						panel_1.add(panel_1_1);	
-						panel_1.revalidate();
+						reInitializeSubPanel(panel_1, panel_1_1);
 					}
 				});
 			}
@@ -252,31 +231,36 @@ public class AdminGui_ extends JPanel {
 		
 		if(onglet.equals("etudiant")){
 			panel_1_1 = new EtudiantGui("ajout");
-			panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-			panel_1_1.setBackground(new Color(162, 63, 99));
-			panel_1_1.setForeground(new Color(255, 255, 255));
-			panel_1.removeAll();
-			panel_1.add(panel_1_1);	
-			panel_1.revalidate();
+			reInitializeSubPanel(panel_1, panel_1_1);
+			
 		}else if(onglet.equals("etape")){
 			panel_1_1 = new EtapeGui("ajout");
-			panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-			panel_1_1.setBackground(new Color(162, 63, 99));
-			panel_1_1.setForeground(new Color(255, 255, 255));
-			panel_1.removeAll();
-			panel_1.add(panel_1_1);	
-			panel_1.revalidate();
+			reInitializeSubPanel(panel_1, panel_1_1);
+			
 		}else{
 			panel_1_1 = new DominanteGui("ajout");
+			reInitializeSubPanel(panel_1, panel_1_1);
+			/*
 			panel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 			panel_1_1.setBackground(new Color(162, 63, 99));
 			panel_1_1.setForeground(new Color(255, 255, 255));
 			panel_1.removeAll();
 			panel_1.add(panel_1_1);	
 			panel_1.revalidate();
+			*/
 		}
 		
+		ConsulterDominante monPanel = new ConsulterDominante();
+		btnAdd = monPanel.getBtnAdd();
 		
+		btnAdd.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				panel_1_1 = new ConsulterDominante();
+				reInitializeSubPanel(panel_1, panel_1_1);
+			}
+		});
 		
 		
 
@@ -285,5 +269,14 @@ public class AdminGui_ extends JPanel {
 	
 	public JButton getBtnDeconnexion() {
 		return btnDeconnexionAdmin;
+	}
+	
+	public void reInitializeSubPanel(JPanel panelContainer, JPanel panelToAdd) {
+		panelContainer.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelContainer.setBackground(new Color(162, 63, 99));
+		panelContainer.setForeground(new Color(255, 255, 255));
+		panelContainer.removeAll();
+		panelContainer.add(panelToAdd);	
+		panelContainer.revalidate();
 	}
 }

@@ -34,10 +34,6 @@ public class AcceuilAdminGui extends JPanel {
 		
 		btnEtudiant = new JButton("Etudiants ");
 		btnEtudiant.setIcon(new ImageIcon(AcceuilAdminGui.class.getResource("/data/Etudiants.jpg")));
-		btnEtudiant.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnEtudiant.setBounds(527, 35, 389, 190);
 		add(btnEtudiant);
 		

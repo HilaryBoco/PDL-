@@ -28,6 +28,7 @@ public class ConsulterDominante extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private int mBefore = 1;
+	private JButton btnAdd;
 	
 
 	/**
@@ -109,7 +110,7 @@ public class ConsulterDominante extends JPanel {
 		btnDelete.setBounds(748, 0, 50, 34);
 		panel.add(btnDelete);
 		
-		JButton btnAdd = new JButton("");
+		btnAdd = new JButton("");
 		
 		btnAdd.setIcon(new ImageIcon(ConsulterDominante.class.getResource("/data/addIcone.jpg")));
 		btnAdd.setBounds(697, 0, 50, 34);
@@ -136,10 +137,6 @@ public class ConsulterDominante extends JPanel {
 		JTextField[] listDominanteSigle = new JTextField[conDom.getAll().size()];
 		JTextField[] listDominantePlaceMax = new JTextField[conDom.getAll().size()];
 		JTextField[] listDominantePlacesApprentis = new JTextField[conDom.getAll().size()];
-		
-		
-		
-		
 		
 
 		for(int i = 0; i < conDom.getAll().size(); i++) {
@@ -231,23 +228,16 @@ public class ConsulterDominante extends JPanel {
 					
 				}
 			});	
-		}
-		
-		btnAdd.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				/*
-				panelId.setLayout(new GridLayout(conDom.getAll().size() + 2, 0, 0, 0));
-				
-				JButton domButtonID = new JButton();
-				domButtonID.setText(" " + conDom.getAll().size() + 1);
-				listDominanteID.add(conDom.getAll().size(), domButtonID);
-				panelId.add(listDominanteID.get(conDom.getAll().size()));
-				panel.revalidate();
-				panel.repaint();
-				*/
-			}
-		});
+		}		
+	}
+
+
+	public JButton getBtnAdd() {
+		return btnAdd;
+	}
+
+
+	public void setBtnAdd(JButton btnAdd) {
+		this.btnAdd = btnAdd;
 	}
 }

@@ -69,6 +69,15 @@ public class Student {
 		this.filiere = filiere;
 	}
 	
+	public Student(int id, String nom, String prenom, String dateDENaissance,  int classement) {
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateDeNaissance = dateDENaissance;
+		this.classement = classement;
+	}
+	
+	
 	/**
 	 * Cette methode 
 	 * @return id de l'admin

@@ -42,6 +42,10 @@ public class Interface {
 	private JButton btnDominateFrAcc;
 	private JButton btnEtapeFrAcc;
 	private JButton btnEtudiantFrAcc;
+	private JButton btnChoix;
+	private JButton btnDeconnexionAdmin1; 
+	private JButton btnDeconnexionAdmin2;
+	private JButton btnDeconnexionAdmin3;
 	
 	
 	
@@ -73,6 +77,7 @@ public class Interface {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frmChoixDominantes = new JFrame();
 		frmChoixDominantes.getContentPane().setForeground(new Color(255, 255, 255));
 		frmChoixDominantes.getContentPane().setBackground(new Color(255, 255, 255));
@@ -90,103 +95,95 @@ public class Interface {
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		frmChoixDominantes.setVisible(true);
 		
+		// Instanciation du panel d'authentification et ajout comme panel de base
+		
 		AuthentificationGui authen = new AuthentificationGui();
+		panel.add(authen);
+		
+		// Intanciation des panels intérieurs
 		
 		AcceuilEtudiantGui acceuilEtu = new AcceuilEtudiantGui();
-		
 		AcceuilAdminGui acceuilAdmin = new AcceuilAdminGui();
-		panel.add(authen);
+		ChoixEtudiantGui choixEtu = new ChoixEtudiantGui();
 		AdminGui_ adminGui_dominante = new AdminGui_("dominante");
 		AdminGui_ adminGui_etudiant = new AdminGui_("etudiant");
 		AdminGui_ adminGui_etape = new AdminGui_("etape");
 		
+		// Instanciation des boutons importés
 		
-		JButton btnDeconnexionAdmin1 = adminGui_dominante.getBtnDeconnexion();
-		JButton btnDeconnexionAdmin2 = adminGui_etudiant.getBtnDeconnexion();
-		JButton btnDeconnexionAdmin3 = adminGui_etape.getBtnDeconnexion();
+		btnDeconnexionAdmin1 = adminGui_dominante.getBtnDeconnexion();
+		btnDeconnexionAdmin2 = adminGui_etudiant.getBtnDeconnexion();
+		btnDeconnexionAdmin3 = adminGui_etape.getBtnDeconnexion();
+		btnDeconnexionEtudiant = acceuilEtu.getBtnDeconnexionEtudiant();
+		btnDeconnAcceuilAdmin = acceuilAdmin.getBtnDeconnexion();
+		btnDominateFrAcc = acceuilAdmin.getBtnDominante();
+		btnConnexion = authen.getBtnConnexion();
+		btnEtudiantFrAcc = acceuilAdmin.getBtnEtudiant();
+		btnEtapeFrAcc = acceuilAdmin.getBtnEtape();
+		btnChoix = acceuilEtu.getBtnChoix();
 		
 		btnDeconnexionAdmin1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(adminGui_etudiant != null) {
-					panel.remove(adminGui_etudiant);
-				}
-				if(adminGui_etape != null) {
-					panel.remove(adminGui_etape);
-				}
-				if(adminGui_dominante != null) {
-					panel.remove(adminGui_dominante);
-				}
-				panel.removeAll();
-				panel.add(authen);
-				panel.repaint();
+				
+				checkRemove(panel, adminGui_etudiant);
+				checkRemove(panel, adminGui_etape);
+				checkRemove(panel, adminGui_dominante);
+				
+				reInitializePanel(panel, null, authen);
 			}
 		});	
 		
 		btnDeconnexionAdmin2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(adminGui_etudiant != null) {
-					panel.remove(adminGui_etudiant);
-				}
-				if(adminGui_etape != null) {
-					panel.remove(adminGui_etape);
-				}
-				if(adminGui_dominante != null) {
-					panel.remove(adminGui_dominante);
-				}
-				panel.removeAll();
-				panel.add(authen);
-				panel.repaint();
+				
+				checkRemove(panel, adminGui_etudiant);
+				checkRemove(panel, adminGui_etape);
+				checkRemove(panel, adminGui_dominante);
+				
+				reInitializePanel(panel, null, authen);
 			}
 		});	
 		
 		btnDeconnexionAdmin3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(adminGui_etudiant != null) {
-					panel.remove(adminGui_etudiant);
-				}
-				if(adminGui_etape != null) {
-					panel.remove(adminGui_etape);
-				}
-				if(adminGui_dominante != null) {
-					panel.remove(adminGui_dominante);
-				}
-				panel.removeAll();
-				panel.add(authen);
-				panel.repaint();
+				
+				checkRemove(panel, adminGui_etudiant);
+				checkRemove(panel, adminGui_etape);
+				checkRemove(panel, adminGui_dominante);
+				
+				reInitializePanel(panel, null, authen);
+				
+				
 			}
 		});	
 		
 		
 		
-		btnDeconnexionEtudiant = acceuilEtu.getBtnDeconnexionEtudiant();
+		
 		btnDeconnexionEtudiant.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panel.remove(acceuilEtu);
-				panel.removeAll();
-				panel.add(authen);
-				panel.repaint();
+				
+				reInitializePanel(panel, acceuilEtu, authen);
+				
 			}
 		});		
 		
-		btnDeconnAcceuilAdmin = acceuilAdmin.getBtnDeconnexion();
+		
 		
 		btnDeconnAcceuilAdmin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panel.remove(acceuilAdmin);
-				panel.removeAll();
-				panel.add(authen);
-				panel.revalidate();
-				panel.repaint();
+				
+				reInitializePanel(panel, acceuilAdmin, authen);
 			}
 		});
 		
 		
-		btnConnexion = authen.getBtnConnexion();
+		
 		
 		btnConnexion.addMouseListener(new MouseAdapter() {
 			@Override
@@ -194,18 +191,12 @@ public class Interface {
 				connection = authen.getBalise();	
 				
 				if(connection == 1) {
-					panel.remove(authen);
-					panel.removeAll();
-					panel.add(acceuilAdmin);
-					panel.revalidate();		
-					panel.repaint();
+					
+					reInitializePanel(panel, authen, acceuilAdmin);
 				}else {
 					if(connection == 2) {
-						panel.remove(authen);
-						panel.removeAll();
-						panel.add(acceuilEtu);
-						panel.revalidate();
-						panel.repaint();
+						
+						reInitializePanel(panel, authen, acceuilEtu);
 					}
 				}
 			}
@@ -213,42 +204,60 @@ public class Interface {
 		
 		
 		
-		btnDominateFrAcc = acceuilAdmin.getBtnDominante();
+		
 		btnDominateFrAcc.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				panel.removeAll();
-				panel.add(adminGui_dominante);
-				panel.revalidate();
-				panel.repaint();
+				reInitializePanel(panel, null, adminGui_dominante);
+
 			}
 		});
 		
-		btnEtudiantFrAcc = acceuilAdmin.getBtnEtudiant();
+		
 		btnEtudiantFrAcc.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				panel.removeAll();
-				panel.add(adminGui_etudiant);
-				panel.revalidate();
-				panel.repaint();
+				reInitializePanel(panel, null, adminGui_etudiant);
 			}
 		});
 		
-		btnEtapeFrAcc = acceuilAdmin.getBtnEtape();
+		
 		btnEtapeFrAcc.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panel.removeAll();
-				panel.add(adminGui_etape);
-				panel.revalidate();
-				panel.repaint();
 				
+				reInitializePanel(panel, null, adminGui_etape);
 			}
 		});
 		
 		
+		btnChoix.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				reInitializePanel(panel, null, choixEtu);
+			}
+		});	
+	}
+	
+	
+	public void reInitializePanel(JPanel panelContainer, JPanel panelToRemove, JPanel panelToAdd) {
+		
+		
+		checkRemove(panelContainer, panelToRemove);
+		panelContainer.removeAll();
+		panelContainer.add(panelToAdd);
+		panelContainer.revalidate();
+		panelContainer.repaint();
+	}
+	
+	
+	public void checkRemove(JPanel panelContainer, JPanel panelToRemove) {
+		
+		if(panelToRemove != null) {
+			panelContainer.remove(panelToRemove);
+		}
 	}
 }

@@ -21,6 +21,7 @@ public class AcceuilEtudiantGui extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private int compt = 0;
 	private JButton btnDeconnexionEtudiant;
+	private JButton btnChoix;
 
 	/**
 	 * Create the panel.
@@ -59,7 +60,8 @@ public class AcceuilEtudiantGui extends JPanel {
 		btnDominanteFinale.setBounds(678, 139, 245, 164);
 		add(btnDominanteFinale);
 		
-		JButton btnChoix = new JButton("Choix");
+		btnChoix = new JButton("Choix");
+		
 		btnChoix.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnChoix.setBackground(new Color(255, 128, 192));
 		btnChoix.setActionCommand("Choix ");
@@ -71,7 +73,7 @@ public class AcceuilEtudiantGui extends JPanel {
 		add(btnChoix);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(109, 11, 593, 38);
+		panel.setBounds(10, 11, 593, 38);
 		add(panel);
 		panel.setLayout(new GridLayout(0, 1, 0, 0));
 		
@@ -81,7 +83,7 @@ public class AcceuilEtudiantGui extends JPanel {
 		lblBienvenueMonTalentueux.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(538, 52, 166, 35);
+		panel_2.setBounds(620, 14, 166, 35);
 		add(panel_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("Your a Winner");
@@ -154,6 +156,14 @@ public class AcceuilEtudiantGui extends JPanel {
 		});
 	}
 	
+	public JButton getBtnChoix() {
+		return btnChoix;
+	}
+
+	public void setBtnChoix(JButton btnChoix) {
+		this.btnChoix = btnChoix;
+	}
+
 	public JButton getBtnDeconnexionEtudiant() {
 		return btnDeconnexionEtudiant;
 	}
